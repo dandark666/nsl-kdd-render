@@ -233,34 +233,7 @@ def index():
         plots['correlation_heatmap'] = plot_to_base64()
         plt.close()
         
-        # 3.4 Matriz de Scatter (NUEVA - Solicitada)
-        plt.figure(figsize=(14, 12))
-        attributes = ["same_srv_rate", "dst_host_srv_count", "class", "dst_host_same_srv_rate"]
-        available_attributes = [attr for attr in attributes if attr in df.columns]
-        
-        if len(available_attributes) >= 2:
-            scatter_matrix(df[available_attributes], 
-                          figsize=(14, 12), 
-                          alpha=0.6,
-                          diagonal='hist',
-                          color='#e74c3c',
-                          hist_kwds={'color': '#3498db', 'alpha': 0.7, 'bins': 20},
-                          density_kwds={'color': '#2ecc71'},
-                          s=30)
-            
-            plt.suptitle('Matriz de Scatter - Análisis de Relaciones Multivariables', 
-                        fontsize=18, fontweight='bold', y=0.95)
-            
-            # Mejorar la legibilidad
-            for ax in plt.gcf().get_axes():
-                ax.tick_params(axis='both', which='major', labelsize=9)
-                ax.set_xlabel(ax.get_xlabel(), fontsize=10, fontweight='bold')
-                ax.set_ylabel(ax.get_ylabel(), fontsize=10, fontweight='bold')
-        
-        plots['scatter_matrix'] = plot_to_base64()
-        plt.close()
-        
-        # 3.5 Distribución de bytes (MEJORADA)
+        # 3.4 Distribución de bytes (MEJORADA)
         plt.figure(figsize=(15, 6))
         
         plt.subplot(1, 2, 1)
@@ -285,7 +258,7 @@ def index():
         plots['bytes_hist'] = plot_to_base64()
         plt.close()
         
-        # 3.6 Servicios más comunes (MEJORADA)
+        # 3.5 Servicios más comunes (MEJORADA)
         plt.figure(figsize=(14, 8))
         if 'service' in df_orig.columns:
             service_counts = df_orig['service'].value_counts().head(10)
@@ -305,7 +278,7 @@ def index():
         plots['services'] = plot_to_base64()
         plt.close()
         
-        # 3.7 Histogramas múltiples (MEJORADA)
+        # 3.6 Histogramas múltiples (NUEVA)
         plt.figure(figsize=(16, 12))
         numeric_cols = df.select_dtypes(include=[np.number]).columns
         if len(numeric_cols) > 0:
@@ -429,5 +402,4 @@ if __name__ == '__main__':
     print("📊 Sistema optimizado para producción")
     print(f"🌐 Accede en: http://localhost:{port}")
     print("🔧 Endpoints disponibles: /, /health, /api/stats")
-    print("📈 Visualizaciones incluidas: 7 gráficos diferentes")
     app.run(host='0.0.0.0', port=port, debug=False)
