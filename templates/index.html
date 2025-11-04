@@ -95,6 +95,73 @@
     </style>
 </head>
 <body>
+    <div class="container-fluid py-4">
+        <!-- Header -->
+        <div class="glass-card p-4 mb-4 text-center">
+            <h1 class="display-5 fw-bold text-dark mb-2">
+                <i class="fas fa-shield-alt text-primary me-3"></i>
+                NSL-KDD Dataset Analysis
+            </h1>
+            <p class="lead text-muted">Dashboard profesional para análisis de detección de intrusiones</p>
+        </div>
+
+        <!-- Estadísticas Principales -->
+        <div class="row mb-4">
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-primary mb-2">
+                        <i class="fas fa-database fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.total_rows }}</h3>
+                    <p class="text-muted mb-0">Total Filas</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-success mb-2">
+                        <i class="fas fa-columns fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.total_columns }}</h3>
+                    <p class="text-muted mb-0">Total Columnas</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-warning mb-2">
+                        <i class="fas fa-calculator fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.numeric_columns }}</h3>
+                    <p class="text-muted mb-0">Numéricas</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-info mb-2">
+                        <i class="fas fa-tags fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.categorical_columns }}</h3>
+                    <p class="text-muted mb-0">Categóricas</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-danger mb-2">
+                        <i class="fas fa-exclamation-triangle fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.null_values }}</h3>
+                    <p class="text-muted mb-0">Valores Nulos</p>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="stat-card text-center">
+                    <div class="text-secondary mb-2">
+                        <i class="fas fa-memory fa-2x"></i>
+                    </div>
+                    <h3 class="fw-bold">{{ stats.memory_usage }}</h3>
+                    <p class="text-muted mb-0">Memoria</p>
+                </div>
+            </div>
+        </div>
 
         <!-- Navegación -->
         <ul class="nav nav-tabs mb-4" id="dashboardTabs" role="tablist">
